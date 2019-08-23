@@ -30,20 +30,20 @@ let getEmpleado = (id,callback) =>{
     
 }
 
-getEmpleado(4,(err, empleado)=>{
+
+var empleadoBuscado = getEmpleado(1, (err, empleado)=>{
     
     if(err){
         return console.log(err);
     }
     
-    console.log(empleado);
+    return empleado;
 });
 
+let getSalario = (id , callback) =>{
 
-let getSalario = (empleado,callback) =>{
 
-
-    let salarioEmpleado = salarios.find(salario => salario.id === empleado.id);
+    let salarioEmpleado = salarios.find(salario => salario.id === id);
 
     if(!salarioEmpleado){
         callback(`No se encontro el salario para el empleado: ${empleado}`);
@@ -53,13 +53,15 @@ let getSalario = (empleado,callback) =>{
 
 }
 
+
 getSalario(1, (err, salarioEmpleado)=>{
+    
     if(err){
         return console.log(err);
     }
 
-    console.log(`Para el empleado: ${empleado} el salario es: ${salarioEmpleado}`);
+    console.log(`Para el empleado: ${empleadoBuscado} el salario es: ${salarioEmpleado.salario}`);
 
-})
+});
 
 
