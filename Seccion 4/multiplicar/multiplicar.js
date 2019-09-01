@@ -4,45 +4,24 @@ let data = '';
 
 
 let listaTabla = (base, limite) =>{
-    
-    return new Promise ((resolve, reject)=>{
-        
-        if(!Number(base) || !Number(limite)){
-            reject(`La base ${base} o el ${limite} no es un numero`);
-            return
-        }
-        
-        for(let i = 1; i < limite ; i++){
+            
+        for(let i = 1; i <= limite ; i++){
             console.log(`${i} * ${base} = ${i * base}`);
         }
-        
-        //const data = new Uint8Array(Buffer.from('Hola Mundo'));
-        
-        // fs.writeFile(`tablas/tabla-${base}.txt`, data, (err) => {
-          
-        //     if (err) 
-        //         reject(err);
-        //     else
-        //         resolve(`tabla-${base}.txt`);
-        
-        // });
-    })
-
-
 
 }
 
 
-let crearArchivo = (base)=>{
+let crearArchivo = (base, limite)=>{
 
     return new Promise ((resolve, reject)=>{
         
-        if(!Number(base)){
-            reject(`La base ${base} no es un numero`);
+        if(!Number(base) || !Number(limite)){
+            reject(`La base o el limite indicado no son numeros`);
             return
         }
         
-        for(let i = 1; i < 11 ; i++){
+        for(let i = 1; i <= limite ; i++){
             data +=`${i} * ${base} = ${i * base}\n`;
         }
         

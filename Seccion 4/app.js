@@ -8,6 +8,15 @@ const argv = require('yargs')
                         alias: 'l',
                         default: 10
                     }
+                }).command('crear','Crea la tabla en base y limites seleccionados',{
+                    base:{
+                        demand:true,
+                        alias:'b'
+                    },
+                    limite:{
+                        demand:true,
+                        alias: 'l'
+                    }
                 })
                 .help()
                 .argv;
@@ -15,18 +24,18 @@ const argv = require('yargs')
 
 //const argv = require('yargs');
 
-const { crearArchivo } = require('./multiplicar/multiplicar');
+const { crearArchivo, listaTabla } = require('./multiplicar/multiplicar');
 
 let comando = argv._[0];
 
-switch(comando){
+ switch(comando){
 
     case 'listar':
-        console.log(comando);
+            listaTabla(argv.base, argv.limite);       
     break;
 
     case 'crear':
-            crearArchivo(argv.base).then(respuesta =>{
+            crearArchivo(argv.base, argv.limite).then(respuesta =>{
                 console.log(`El archivo ${respuesta} ha sido creado exitosamente`);
             }).catch(err =>{
                 console.log(err);
