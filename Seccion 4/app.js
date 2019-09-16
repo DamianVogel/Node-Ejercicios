@@ -1,25 +1,4 @@
-const argv = require('yargs')
-                .command('listar','Imprime en Consola la tabla de multiplicar',{
-                    base:{
-                        demand:true,
-                        alias: 'b'
-                    },
-                    limite:{
-                        alias: 'l',
-                        default: 10
-                    }
-                }).command('crear','Crea la tabla en base y limites seleccionados',{
-                    base:{
-                        demand:true,
-                        alias:'b'
-                    },
-                    limite:{
-                        demand:true,
-                        alias: 'l'
-                    }
-                })
-                .help()
-                .argv;
+const argv = require('./config/yargs').argv;
 
 
 //const argv = require('yargs');
