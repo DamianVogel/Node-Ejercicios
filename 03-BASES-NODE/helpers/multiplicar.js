@@ -1,27 +1,35 @@
 const fs = require('fs');
+const colors = require('colors');
 
-const crearArchivoTabla = (tabla = 5)=>{
+const crearArchivoTabla = (tabla = 5, listar, hasta)=>{
 
-    var salida = '';
+    var salida = ''; 
+    var consola = '';
 
-    console.log('Tabla del: '+ tabla);
-    console.log('===================');
 
-    for (let index = 1; index < 11; index++) {
+    for (let index = 1; index <=  hasta; index++) {
         
         let multiplicacion = tabla*index;
         //console.log(`${tabla} x ${index} = ${multiplicacion}`);
-        salida +=`${tabla} x ${index} = ${multiplicacion}\n`;
+        salida +=`${tabla} ${'x'.green } ${index} ${'='.green} ${multiplicacion}\n`;
+        //consola +=`${tabla} ${'x' } ${index} ${'='} ${multiplicacion}\n`;
 
     }
+    if(listar){
+        
+        console.log('==================='.green);
+        console.log('Tabla del: '.green + colors.blue( tabla));
+        console.log('==================='.green);
+        //console.log('===================');
+        console.log(`${salida}\n`);
 
-    console.log(`${salida}\n`);
+    } 
 
     return new Promise((resolve, reject)=>{
 
-        nombreDelArchivo = `tabla-del-${tabla}`;
+        nombreDelArchivo = `./salida/tabla-del-${tabla}.txt`;
 
-        fs.writeFile(nombreDelArchivo, salida, (err)=>{
+        fs.writeFile(nombreDelArchivo, consola, (err)=>{
             
             if(err){
                 let error = new Error;
