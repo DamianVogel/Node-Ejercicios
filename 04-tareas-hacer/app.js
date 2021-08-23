@@ -6,7 +6,8 @@ const {
     pausarMenu,
     leerInput,
     listadoTareasBorrar,
-    confirmar
+    confirmar,
+    mostrarListadoCheckList
 } = require('./helpers/inquirer');
 
 const {
@@ -62,6 +63,13 @@ const main = async () => {
                 //console.log( tareas._listado);
                 tareas.listarPendientesCompletadas(false);
             
+            break;
+
+            case '5': // completado | pendiente
+                
+                //console.log( tareas._listado);
+                const ids = await mostrarListadoCheckList(tareas.listadoArr);
+                console.log(ids);            
             break;
 
             case '6':
