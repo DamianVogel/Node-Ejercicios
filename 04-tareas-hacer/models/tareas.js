@@ -108,7 +108,22 @@ class Tareas {
 
     }
 
-   
+    toogleTareas(ids=[]){
+
+        ids.forEach( id =>{
+            if(!id.completadoEn){
+                this._listado[id].completadoEn = new Date().toISOString();
+            }
+        });
+
+        this.listadoArr.forEach( tarea =>{
+            if(!ids.includes(tarea.id)){
+                this._listado[tarea.id].completadoEn = null;
+            }
+        });
+
+
+    }
 
 };
 
